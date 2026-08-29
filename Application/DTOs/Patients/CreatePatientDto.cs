@@ -18,6 +18,5 @@ namespace MediPulse.Application.DTOs.Patients
         public string Address { get; set; } = string.Empty;
         public BloodGroup BloodGroup { get; set; }
         public string EmergencyContact { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; }
     }
 }

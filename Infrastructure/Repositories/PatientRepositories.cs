@@ -23,7 +23,7 @@ namespace MediPulse.Infrastructure.Repositories
             await _context.Patients.AddAsync(patient);
         }
 
-        public void DeleteAsync(Patient patient)
+        public void Delete(Patient patient)
         {
             _context.Patients.Remove(patient);
         }
@@ -52,7 +52,7 @@ namespace MediPulse.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public void UpdateAsync(Patient patient)
+        public void Update(Patient patient)
         {
              _context.Patients.Update(patient);
         }
