@@ -1,5 +1,8 @@
+using MediPulse.Application;
+using MediPulse.Infrastructure;
+using System.Text.Json.Serialization;
 
-namespace HMSApi
+namespace MediPulse.Api
 {
     public class Program
     {
@@ -8,7 +11,15 @@ namespace HMSApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllers();
+            builder.Services.AddInfrastructureServices(builder.Configuration);
+            builder.Services.AddApplicationServices();
+
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                });
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 

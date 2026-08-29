@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace HMSApi.Controllers
+namespace MediPulse.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

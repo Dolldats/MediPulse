@@ -1,4 +1,4 @@
-namespace HMSApi
+namespace MediPulse.Api
 {
     public class WeatherForecast
     {

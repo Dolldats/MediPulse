@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37314.3 d17.14
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediPulse.Application", "Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediPulse.Infrastructure", "Infrastructure\MediPulse.Infrastructure.csproj", "{62D13F9B-9C9B-4C4F-B973-EE1FDA5E07A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediPulse.Api", "HMSApi\MediPulse.Api.csproj", "{667D50EE-7B4E-43C4-A23C-2566E89CCC44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediPulse.Api", "MediPulse.Api\MediPulse.Api.csproj", "{667D50EE-7B4E-43C4-A23C-2566E89CCC44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
