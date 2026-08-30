@@ -42,14 +42,14 @@ namespace MediPulse.Infrastructure.Repositories
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task SaveChangesAsync()
+        public async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
         }
 
         public void UpdateDepartmentAsync(Department department)
         {
-            throw new NotImplementedException();
+             _context.Departments.Update(department);
         }
     }
 }
