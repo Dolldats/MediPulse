@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MediPulse.Infrastructure.Repositories
 {
-    internal class Departmentrepositories : IDepartmentRepositories
+    public class Departmentrepositories : IDepartmentRepositories
     {
         private readonly MediPulseDbContext _context;
 
