@@ -42,6 +42,12 @@ namespace MediPulse.Infrastructure.Repositories
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
+        public async Task<Department?> GetDepartmentByNameAsync(string name)
+        {
+            return await _context.Departments
+                .FirstOrDefaultAsync(p => p.Name == name);
+        }
+
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();

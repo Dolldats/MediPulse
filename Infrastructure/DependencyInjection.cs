@@ -20,6 +20,7 @@ namespace MediPulse.Infrastructure
                     ServerVersion.Parse("8.0.36-mysql")));
 
             services.AddScoped<IPatientRepositories, PatientRepositories>();
+            services.AddScoped<IDepartmentRepositories, Departmentrepositories>();
 
             return services;
         }
