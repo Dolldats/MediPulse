@@ -1,4 +1,5 @@
 ﻿using MediPulse.Application.DTOs.Department;
+using MediPulse.Application.Interfaces.Repositories;
 using MediPulse.Application.Interfaces.Services;
 using MediPulse.Domain.Entities;
 using System;
@@ -11,29 +12,100 @@ namespace MediPulse.Application.Services
 {
     public class DepartmentServices : IDepartmentServices
     {
-        public Task<Department> CreateDepartmentAsync(CreateDepartmentDto dto)
+        private readonly IDepartmentRepositories _departmentRepositories;
+
+        public DepartmentServices(IDepartmentRepositories departmentRepositories)
         {
-            throw new NotImplementedException();
+            _departmentRepositories = departmentRepositories;
+        }
+        public async Task<Department> CreateDepartmentAsync(CreateDepartmentDto dto)
+        {
+            var existingDepartment = await _departmentRepositories.GetDepartmentByNameAsync(dto.Name);
+
+            if(existingDepartment != null)
+            {
+                throw new InvalidOperationException("Department with this name already exists.");
+            }
+
+            var department = new Department
+            {
+                Name = dto.Name,
+                Description = dto.Description,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            await _departmentRepositories.CreateDepartmentAsync(department);
+            await _departmentRepositories.SaveChangesAsync();
+
+            return TakeToDepartmentDto(department);
         }
 
-        public Task<bool> DeleteDepartmentAsync(int id)
+        private static Department TakeToDepartmentDto(Department department)
         {
-            throw new NotImplementedException();
+            return new Department
+            {
+                Id = department.Id,
+                Name = department.Name,
+                Description = department.Description,
+                CreatedAt = department.CreatedAt
+            };
         }
 
-        public Task<IEnumerable<Department>> GetAllDepartmentsAsync()
+        public async Task<bool> DeleteDepartmentAsync(int id)
         {
-            throw new NotImplementedException();
+            var deleted = await _departmentRepositories.GetDepartmentByIdAsync(id);
+
+            if(deleted == null)
+            {
+                return false;
+            }
+
+            _departmentRepositories.DeleteDepartmentAsync(deleted);
+            await _departmentRepositories.SaveChangesAsync();
+
+            return true;
         }
 
-        public Task<Department?> GetDepartmentByIdAsync(int id)
+        public async Task<IEnumerable<Department>> GetAllDepartmentsAsync()
         {
-            throw new NotImplementedException();
+            var departments = await _departmentRepositories.GetAllDepartmentsAsync();
+
+            return departments.Select(TakeToDepartmentDto);
         }
 
-        public Task<Department?> UpdateDepartmentAsync(int id, UpdateDepartmentDto dto)
+        public async Task<Department?> GetDepartmentByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var department = await _departmentRepositories.GetDepartmentByIdAsync(id);
+
+            if(department == null)
+            {
+                return null;
+            }
+
+            return TakeToDepartmentDto(department);
+        }
+
+        public async Task<Department?> UpdateDepartmentAsync(int id, UpdateDepartmentDto dto)
+        {
+            var department = await _departmentRepositories.GetDepartmentByIdAsync(id);
+            if(department == null)
+            {
+                return null;
+            }
+
+            var existingDepartment = await _departmentRepositories.GetDepartmentByNameAsync(dto.Name);
+            if(existingDepartment != null && existingDepartment.Id != id)
+            {
+                throw new InvalidOperationException("Another department with this name already exists.");
+            }
+
+            department.Name = dto.Name;
+            department.Description = dto.Description;
+
+            _departmentRepositories.UpdateDepartmentAsync(department);
+            await _departmentRepositories.SaveChangesAsync();
+
+            return TakeToDepartmentDto(department);
         }
     }
 }

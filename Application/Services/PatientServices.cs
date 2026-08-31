@@ -45,10 +45,10 @@ namespace MediPulse.Application.Services
             await _patientRepositories.AddAsync(patient);
             await _patientRepositories.SaveChangesAsync();
 
-            return TakeToDto(patient);
+            return TakeToPatientDto(patient);
         }
 
-        private static PatientDto TakeToDto(Patient patient)
+        private static PatientDto TakeToPatientDto(Patient patient)
         {
             return new PatientDto
             {
@@ -85,7 +85,7 @@ namespace MediPulse.Application.Services
         {
             var patients = await _patientRepositories.GetAllPatientsAsync();
 
-            return patients.Select(TakeToDto);
+            return patients.Select(TakeToPatientDto);
         }
 
         public async Task<PatientDto?> GetPatientByIdAsync(int id)
@@ -97,7 +97,7 @@ namespace MediPulse.Application.Services
                 return null;
             }
 
-            return TakeToDto(patient);
+            return TakeToPatientDto(patient);
         }
 
         public async Task<PatientDto?> UpdatePatientAsync(int id, UpdatePatientDto dto)
@@ -128,7 +128,7 @@ namespace MediPulse.Application.Services
             _patientRepositories.Update(patient);
             await _patientRepositories.SaveChangesAsync();
 
-            return TakeToDto(patient);
+            return TakeToPatientDto(patient);
         }
     }
 }

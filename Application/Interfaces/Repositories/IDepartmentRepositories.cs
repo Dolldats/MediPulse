@@ -11,6 +11,7 @@ namespace MediPulse.Application.Interfaces.Repositories
     {
         Task<List<Department>> GetAllDepartmentsAsync();
         Task<Department?> GetDepartmentByIdAsync(int id);
+        Task<Department?> GetDepartmentByNameAsync(string name);
         Task CreateDepartmentAsync(Department department);
         void UpdateDepartmentAsync(Department department);
         void DeleteDepartmentAsync(Department department);
