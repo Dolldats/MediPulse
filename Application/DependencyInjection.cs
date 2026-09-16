@@ -10,6 +10,7 @@ namespace MediPulse.Application
         {
             services.AddScoped<IPatientServices, PatientServices>();
             services.AddScoped<IDepartmentServices, DepartmentServices>();
+            services.AddScoped<IDoctorServices, DoctorServices>();
 
             return services;
         }

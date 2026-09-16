@@ -22,7 +22,7 @@ namespace MediPulse.Application.Services
         {
             var existingDepartment = await _departmentRepositories.GetDepartmentByNameAsync(dto.Name);
 
-            if(existingDepartment != null)
+            if (existingDepartment != null)
             {
                 throw new InvalidOperationException("Department with this name already exists.");
             }
@@ -55,7 +55,7 @@ namespace MediPulse.Application.Services
         {
             var deleted = await _departmentRepositories.GetDepartmentByIdAsync(id);
 
-            if(deleted == null)
+            if (deleted == null)
             {
                 return false;
             }
@@ -77,7 +77,7 @@ namespace MediPulse.Application.Services
         {
             var department = await _departmentRepositories.GetDepartmentByIdAsync(id);
 
-            if(department == null)
+            if (department == null)
             {
                 return null;
             }
@@ -88,13 +88,13 @@ namespace MediPulse.Application.Services
         public async Task<Department?> UpdateDepartmentAsync(int id, UpdateDepartmentDto dto)
         {
             var department = await _departmentRepositories.GetDepartmentByIdAsync(id);
-            if(department == null)
+            if (department == null)
             {
                 return null;
             }
 
             var existingDepartment = await _departmentRepositories.GetDepartmentByNameAsync(dto.Name);
-            if(existingDepartment != null && existingDepartment.Id != id)
+            if (existingDepartment != null && existingDepartment.Id != id)
             {
                 throw new InvalidOperationException("Another department with this name already exists.");
             }

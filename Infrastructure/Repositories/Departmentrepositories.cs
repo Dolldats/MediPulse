@@ -21,7 +21,7 @@ namespace MediPulse.Infrastructure.Repositories
 
         public async Task CreateDepartmentAsync(Department department)
         {
-           await _context.Departments.AddAsync(department);
+            await _context.Departments.AddAsync(department);
         }
 
         public void DeleteDepartmentAsync(Department department)
@@ -55,7 +55,7 @@ namespace MediPulse.Infrastructure.Repositories
 
         public void UpdateDepartmentAsync(Department department)
         {
-             _context.Departments.Update(department);
+            _context.Departments.Update(department);
         }
     }
 }

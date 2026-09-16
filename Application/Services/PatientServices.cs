@@ -55,13 +55,13 @@ namespace MediPulse.Application.Services
                 Id = patient.Id,
                 FirstName = patient.FirstName,
                 LastName = patient.LastName,
-                DateOfBirth= patient.DateOfBirth,
+                DateOfBirth = patient.DateOfBirth,
                 Gender = patient.Gender,
                 PhoneNumber = patient.PhoneNumber,
                 Email = patient.Email,
                 Address = patient.Address,
                 BloodGroup = patient.BloodGroup,
-                EmergencyContact= patient.EmergencyContact,
+                EmergencyContact = patient.EmergencyContact,
                 CreatedAt = patient.CreatedAt,
             };
         }

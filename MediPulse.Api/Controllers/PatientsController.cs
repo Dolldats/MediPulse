@@ -29,7 +29,7 @@ namespace MediPulse.Api.Controllers
         {
             var patient = await _patientServices.GetPatientByIdAsync(id);
 
-            if(patient == null)
+            if (patient == null)
             {
                 return NotFound("Patient Not Found");
             }

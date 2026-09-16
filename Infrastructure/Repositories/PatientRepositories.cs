@@ -14,7 +14,7 @@ namespace MediPulse.Infrastructure.Repositories
     {
         private readonly MediPulseDbContext _context;
 
-        public PatientRepositories(MediPulseDbContext context) 
+        public PatientRepositories(MediPulseDbContext context)
         {
             _context = context;
         }
@@ -54,7 +54,7 @@ namespace MediPulse.Infrastructure.Repositories
 
         public void Update(Patient patient)
         {
-             _context.Patients.Update(patient);
+            _context.Patients.Update(patient);
         }
     }
 }

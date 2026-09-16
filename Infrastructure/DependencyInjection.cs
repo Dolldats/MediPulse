@@ -21,6 +21,7 @@ namespace MediPulse.Infrastructure
 
             services.AddScoped<IPatientRepositories, PatientRepositories>();
             services.AddScoped<IDepartmentRepositories, Departmentrepositories>();
+            services.AddScoped<IDoctorRepositories, DoctorRepositories>();
 
             return services;
         }

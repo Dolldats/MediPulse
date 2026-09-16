@@ -12,7 +12,7 @@ namespace MediPulse.Application.Interfaces.Repositories
         Task<IEnumerable<Patient>> GetAllPatientsAsync();
         Task<Patient?> GetPatientByIdAsync(int id);
         Task<Patient?> GetPatientByEmailAsync(string email);
-        Task AddAsync (Patient patient);
+        Task AddAsync(Patient patient);
         void Update(Patient patient);
         void Delete(Patient patient);
         Task SaveChangesAsync();
